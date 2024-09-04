@@ -1,0 +1,23 @@
+name: Pipeline Ritchie Lint
+on:
+  push:
+    branches:
+      - main
+jobs:
+  linter-ritchie:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.14'
+
+      - name: NPM i
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
